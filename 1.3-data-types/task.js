@@ -14,13 +14,21 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     	return `Параметр 'Общая стоимость' содержит неправильное значение ${amount}`;
     }
 
-    let principal = amount - contribution;
+    let principal = amount2 - contribution2;
     let today = new Date();
     let months = ((date.getFullYear() - today.getFullYear()) * 12) + (date.getMonth() - today.getMonth());
-    // return totalAmount;
+    let percentMonth = percent2 / 100 / 12;
+    let monthlyPayment = principal * (percentMonth + percentMonth / (((1 + percentMonth)**months) - 1));
+    let totalAmount = contribution2 + months * monthlyPayment;
+    totalAmount = Number(totalAmount.toFixed(2));
+    console.log(totalAmount);
+    return totalAmount;
 }
 
 function getGreeting(name) {
     // код для задачи №2 писать здесь
     // return greeting;
 }
+
+// S*(P+P/(((1+P)^n)-1)), где: S - тело кредита, 
+// P - 1/12 процентной ставки (от 0 до 1), n - количество месяцев ^ - возведение в степень

@@ -7,8 +7,8 @@ function getResult(a,b,c){
     if (d === 0) {
     	x[0] = -b / (2 * a); 
     } else if (d > 0) {
-    	x[0] = (-b + d**0.5) / 2 * a;
-    	x[1] = (-b - d**0.5) / 2 * a;
+    	x[0] = (-b + (Math.sqrt(d))) / 2 * a;
+    	x[1] = (-b - (Math.sqrt(d))) / 2 * a;
     }
 
     return x;
@@ -34,8 +34,7 @@ function getAverageMark(marks){
 }
 
 function askDrink(name,dateOfBirthday){
-    let today = new Date();
-    let age = today.getFullYear() - dateOfBirthday.getFullYear();
+    let age = new Date().getFullYear() - dateOfBirthday.getFullYear();
     
     if (age > 17) {
     	return `Не желаете ли олд-фэшн, ${name}?`;

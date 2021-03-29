@@ -32,10 +32,9 @@ function checkBirthday(birthday) {
     const year = Number(secBirthday[0]);
     const month = Number(secBirthday[1] - 1);
     const day = Number(secBirthday[2]);
-    // const parsedBirthday = new Date(birthday).getTime();
-    // не переназначать аргумент функции
-    birthday = +new Date(year, month, day);
-    const diff = now - birthday;
+    let parsedBirthday = new Date(birthday).getTime();
+    parsedBirthday = +new Date(year, month, day);
+    const diff = now - parsedBirthday;
     const age = diff / (1000 * 60 * 60 * 24 * 365.25);
     
     if (age >= 18) {

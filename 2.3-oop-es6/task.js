@@ -1,5 +1,5 @@
 class PrintEditionItem {
-	constructor(name, releaseDate, pagesCount) {
+	constructor(name, releaseDate, pagesCount, state, type) {
 		this.name = name;
 		this.releaseDate = releaseDate;
 		this.pagesCount = pagesCount;
@@ -26,6 +26,65 @@ class PrintEditionItem {
   }
 }
 
+class Magazine extends PrintEditionItem {
+	constructor(name, releaseDate, pagesCount, state, type) {
+	  	super(state);
+	  	this.name = name;
+	    this.releaseDate = releaseDate;
+	    this.pagesCount = pagesCount;
+	    this.type = 'magazine';
+	    
+	    
+  	}
+}
+
+class Book extends PrintEditionItem {
+	constructor(author, name, releaseDate, pagesCount, state, type) {
+	  	super(state);
+	  	this.author = author;
+	  	this.name = name;
+	    this.releaseDate = releaseDate;
+	    this.pagesCount = pagesCount;
+	    this.type = 'book';
+  	}
+}
+
+class NovelBook extends Book {
+	constructor(author, name, releaseDate, pagesCount, state, type) {  	
+	  	super(state);
+	  	this.author = author;
+	  	this.name = name;
+	    this.releaseDate = releaseDate;
+	    this.pagesCount = pagesCount;
+	    this.type = 'novel';
+  	}
+}
+
+class FantasticBook extends Book {
+	constructor(author, name, releaseDate, pagesCount, state, type) { 	
+	  	super(state);
+	  	this.author = author;
+	  	this.name = name;
+	    this.releaseDate = releaseDate;
+	    this.pagesCount = pagesCount;
+	    this.type = 'fantastic';
+  	}
+}
+
+class DetectiveBook extends Book {
+	constructor(author, name, releaseDate, pagesCount, state, type) {
+	  	super(state);
+	  	this.author = author;
+	  	this.name = name;
+	    this.releaseDate = releaseDate;
+	    this.pagesCount = pagesCount;
+	    this.type = 'detective';
+  	}
+}
+
+//Задача 2
+
+
 class Library {
 	constructor(name) {
 		this.name = name;
@@ -39,6 +98,28 @@ class Library {
 	}
 
 	findBookBy(type, value) {
-		
+		for (let i = 0; i < this.book.length; i++){
+	    	if (this.book[i].type === value) {
+		        return this.book[i]
+	    	}
+		}
+	}
+	
+	giveBookByName() {
+	  
 	}
 } 
+
+// // Задача 3 
+
+// class StudentLog {
+//   	constructor(name) {
+//     	this.name = name;
+//   	}
+  
+//   	getName() {
+//    		return this.name;
+//  	}
+  
+  
+// }

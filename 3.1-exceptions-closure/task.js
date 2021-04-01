@@ -3,21 +3,17 @@
 function parseCount(number) {
 	const num = Number.parseInt(number);
 	if (isNaN(num)) {
-		const parseError = new Error('Невалидное значение');
-		throw parseError;
+		throw new Error('Невалидное значение');
 	}
 	return num;
 }
 
 function validateCount(number) {
 	try {
-		parseCount(number);
+		return parseCount(number);
 	} catch(e) {
-		throw new Error('Невалидное значение');
-		// return parseCount(number);
-	}
-		//не совсем понимаю, что от меня в задаче требуется!?
-	return parseCount(number);
+		return e;
+	}		
 }
 
 // Задача 2
@@ -33,11 +29,12 @@ class Triangle {
 	}
 
 	getPerimeter() {
-		return this.a + this.b + this.c;
+		this.p = this.a + this.b + this.c;
+		return this.p;
 	}
 
 	getArea() {
-		const p = (this.a + this.b + this.c) / 2;
+		const p = this.p / 2;
 		return Number(Math.sqrt(p*(p-this.a)*(p-this.b)*(p-this.c)).toFixed(3));
 	}
 }

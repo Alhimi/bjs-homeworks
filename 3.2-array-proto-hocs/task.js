@@ -13,14 +13,8 @@
 //   return innerResultFunc;
 // }
 
-// function memorize3(func) {
-//   function innerResultFunc(a) {
-//     return func(a);
-//   };
-//   return innerResultFunc;
-// }
 
-// const resultFunction = memorize3(a => a ** 2);
+// const resultFunction = memorize(a => a ** 2);
 // resultFunction(2); // <= должно вызываться без ошибок
 
 
@@ -41,7 +35,7 @@
 
 // /////////////
 
-function compareArrays( arr1, arr2 ) {
+function compareArrays(arr1, arr2) {
 	if (arr1.length === arr2.length && arr1.every(num => num === arr2[arr1.indexOf(num)])) {
     return true;
   } else {
@@ -53,7 +47,25 @@ function compareArrays( arr1, arr2 ) {
 
 
 // непонимаю, как можно обЪявить массив в функции так, что бы щт при каждом вызове не переобЪявлялся!?
-
 const memory = []
+
+function memorize(func, limit) {
+  function innerResultFunc(...args) {
+  	if(memory.some(arr.args === [...args]) {
+  		let result = memory.find(arr.args === [...args]).result;
+  	} else {
+  		let result = func(...args); 
+  		memory.push({'args': ...args, 'result': result});	
+  	}
+    if(memory.length > limit) {
+    	memory.shift;
+    }
+    return result;
+    }
+  }
+  return innerResultFunc;
+}
+
+
 
 

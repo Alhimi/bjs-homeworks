@@ -46,23 +46,34 @@ function compareArrays(arr1, arr2) {
 // //////////
 
 
-// непонимаю, как можно обЪявить массив в функции так, что бы щт при каждом вызове не переобЪявлялся!?
+// непонимаю, как можно обЪявить массив в функции так, что бы он при каждом вызове не переобЪявлялся!?
 const memory = []
 
-function memorize(func, limit) {
+  	// тоже никак не понимаю, как метод some соеденить с compareArrays так, 
+  	// что бы compareArrays правильно получал аргументы. 
+  	// пробовал по другому, но не получилось >>>
+  	
+// function memorize(func, limit) {
+//   function innerResultFunc(...args) {
+  	// if(memory.some(arr.args === [...args]) {
+  	// 	let result = memory.find(arr.args === [...args]).result;
+  	// } else {
+  	// 	let result = func(...args); 
+  	// 	memory.push({'args': ...args, 'result': result});	
+  	// }
+   //  if(memory.length > limit) {
+   //  	memory.shift;
+   //  }
+   //  return result;
+   //  }
+//   }
+//   return innerResultFunc;
+// }
+
+function memorize(func) {
   function innerResultFunc(...args) {
-  	if(memory.some(arr.args === [...args]) {
-  		let result = memory.find(arr.args === [...args]).result;
-  	} else {
-  		let result = func(...args); 
-  		memory.push({'args': ...args, 'result': result});	
-  	}
-    if(memory.length > limit) {
-    	memory.shift;
-    }
-    return result;
-    }
-  }
+    return func(...args);
+  };
   return innerResultFunc;
 }
 

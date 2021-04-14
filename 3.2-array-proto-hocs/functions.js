@@ -2,14 +2,12 @@
 
 const weapons = [new Knife(), new Staff(), new Axe(), new StormStaff(), new LongBow(), new Bow()];
 
-function getNames(weapons) {
+function getNames() {
   return weapons.map(item => item.name);
 }
 
-// не понимаю, как правильно передать массив оружия в функции
-
-function getCountReliableWeapons(weapons, init) {
-  return weapons.reduce(function (previosValue, item){
+function getCountReliableWeapons(init) {
+  return weapons.reduce((previosValue, item) => {
     if (item.durability > init) {
       previosValue++;
     }
@@ -17,28 +15,28 @@ function getCountReliableWeapons(weapons, init) {
   }, 0);
 } 
 
-function hasReliableWeapons(weapons, init) {
+function hasReliableWeapons(init) {
   return weapons.some(item => item.durability > init);
 }
 
-function getReliableWeaponsNames(weapons, init) {
-    return weapons.map(function(item) {
+function getReliableWeaponsNames(init) {
+    return weapons.map((item) => {
     if (item.durability > init) { 
   	return item.name;
     }
   }).filter(item => item !== undefined);
 }
 
-function getTotalDamage(weapons) {
-  return weapons.reduce(function (previosValue, item){
+function getTotalDamage() {
+  return weapons.reduce((previosValue, item) => {
     previosValue = previosValue + item.initDurability - item.durability; 
     return previosValue;
   }, 0);
 } 
 
-function bonus(arr, num) {
+function getValuestCountToSumValues(arr, num) {
   let count = 0;
-  return arr.reduce(function(previosValue, item){
+  return arr.reduce((previosValue, item) => {
     count += item;
   	if (num >= count) {
   		previosValue++

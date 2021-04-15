@@ -36,11 +36,7 @@
 // /////////////
 
 function compareArrays(arr1, arr2) {
-	if (arr1.length === arr2.length && arr1.every(num => num === arr2[arr1.indexOf(num)])) {
-    return true;
-  } else {
-    return false;
-  }
+  return arr1.every((num, index) => num === arr2[index]) && arr1.length === arr2.length;
 }
 
 // //////////

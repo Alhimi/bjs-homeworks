@@ -6,41 +6,36 @@ function getNames() {
   return weapons.map(item => item.name);
 }
 
+
 function getCountReliableWeapons(init) {
-  return weapons.reduce((previosValue, item) => {
-    if (item.durability > init) {
-      previosValue++;
-    }
-    return previosValue;
-  }, 0);
+  return weapons.filter(weapon => weapon.durability > init).length;     
 } 
+
 
 function hasReliableWeapons(init) {
   return weapons.some(item => item.durability > init);
 }
 
+
 function getReliableWeaponsNames(init) {
-    return weapons.map((item) => {
-    if (item.durability > init) { 
-  	return item.name;
-    }
-  }).filter(item => item !== undefined);
+    return weapons.filter(weapon => weapon.durability > init).map(item => item.name);
 }
+
 
 function getTotalDamage() {
   return weapons.reduce((previosValue, item) => {
-    previosValue = previosValue + item.initDurability - item.durability; 
-    return previosValue;
+    return previosValue + item.attack;
   }, 0);
 } 
 
+
 function getValuestCountToSumValues(arr, num) {
-  let count = 0;
-  return arr.reduce((previosValue, item) => {
-    count += item;
-  	if (num >= count) {
-  		previosValue++
+  return arr.reduce((newObj, item) => {
+  	if (num > newObj.sum) {
+      newObj.count += 1;
+      newObj.sum += item;
   	}
-    return previosValue;
-  }, 0);
+    return newObj;
+  }, {count: 0,
+      sum: 0,}).count;
 }
